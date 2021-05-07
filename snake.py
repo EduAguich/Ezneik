@@ -31,17 +31,13 @@ def inside(head):
     return -200 < head.x < 190 and -200 < head.y < 190
 
 def move():
-<<<<<<< HEAD
     # Determina el color de la serpiente y la comida
     crayola = ["cyan", "purple", "yellow", "blue", "green", "pink", "orange", "gold", "silver","beige", "spring green"]
     colorSnake = choice(crayola)
     colorComida = choice(crayola)
     if colorSnake == colorComida:
-        colorComida = choice(crayola)
+        colorComida = choice(crayola)     
         
-=======
-       
->>>>>>> Edu
     head = snake[-1].copy()
     head.move(aim)
     food1 = food.move(vector(randint(-1,1)*10, randint(-1,1)*10))
