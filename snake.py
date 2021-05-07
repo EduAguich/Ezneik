@@ -1,5 +1,14 @@
+"""
+Modificado por: 
+Eduardo Aguilar Chías
+Alison Daniela Nava Bravo
+Líder: Eduardo Aguilar
+Colaborador: Alison Daniela Nava 
+""" 
+
+
 from turtle import *
-from random import randrange
+from random import *
 from freegames import square, vector
 
 food = vector(0, 0)
@@ -16,12 +25,17 @@ def inside(head):
     return -200 < head.x < 190 and -200 < head.y < 190
 
 def move():
-    "Move snake forward one segment."
+    crayola = ["cyan", "purple", "yellow", "blue", "green", "pink", "orange", "gold", "silver","beige", "spring green"]
+    colorSnake = choice(crayola)
+    colorComida = choice(crayola)
+    if colorSnake == colorComida:
+        colorComida = choice(crayola)
+        
     head = snake[-1].copy()
     head.move(aim)
 
     if not inside(head) or head in snake:
-        square(head.x, head.y, 9, 'red')
+        square(head.x, head.y, 9, "magenta")
         update()
         return
 
@@ -37,9 +51,9 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, colorSnake)
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, colorComida)
     update()
     ontimer(move, 100)
 
@@ -47,6 +61,7 @@ setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
 listen()
+
 onkey(lambda: change(10, 0), 'Right')
 onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
