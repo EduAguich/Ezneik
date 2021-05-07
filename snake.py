@@ -6,7 +6,6 @@ Líder: Eduardo Aguilar
 Colaborador: Alison Daniela Nava 
 """ 
 
-
 from turtle import *
 from random import *
 from freegames import square, vector
@@ -33,6 +32,10 @@ def move():
         
     head = snake[-1].copy()
     head.move(aim)
+    food1 = food.move(vector(randint(-1,1)*10, randint(-1,1)*10))
+    
+    if not inside(food):
+        food1 = vector(0,0)
 
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, "magenta")
@@ -56,7 +59,7 @@ def move():
     square(food.x, food.y, 9, colorComida)
     update()
     ontimer(move, 100)
-
+    
 setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
