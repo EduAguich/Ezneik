@@ -15,6 +15,13 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
+crayola = ["cyan", "purple", "yellow", "blue", "green", "pink", "orange", "gold", "silver","beige", "spring green"]
+colorSnake = choice(crayola)
+colorComida = choice(crayola)
+
+if colorSnake == colorComida:
+    colorComida = choice(crayola)
+
 def change(x, y):
     "Change snake direction."
     aim.x = x
@@ -25,12 +32,7 @@ def inside(head):
     return -200 < head.x < 190 and -200 < head.y < 190
 
 def move():
-    crayola = ["cyan", "purple", "yellow", "blue", "green", "pink", "orange", "gold", "silver","beige", "spring green"]
-    colorSnake = choice(crayola)
-    colorComida = choice(crayola)
-    if colorSnake == colorComida:
-        colorComida = choice(crayola)
-        
+       
     head = snake[-1].copy()
     head.move(aim)
 
