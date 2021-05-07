@@ -6,7 +6,6 @@ Líder: Eduardo Aguilar
 Colaborador: Alison Daniela Nava 
 """ 
 
-
 from turtle import *
 from random import *
 from freegames import square, vector
@@ -25,6 +24,7 @@ def inside(head):
     return -200 < head.x < 190 and -200 < head.y < 190
 
 def move():
+    # Determina el color de la serpiente y la comida
     crayola = ["cyan", "purple", "yellow", "blue", "green", "pink", "orange", "gold", "silver","beige", "spring green"]
     colorSnake = choice(crayola)
     colorComida = choice(crayola)
@@ -62,6 +62,7 @@ hideturtle()
 tracer(False)
 listen()
 
+#Determina la dirección de la serpiente
 onkey(lambda: change(10, 0), 'Right')
 onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
