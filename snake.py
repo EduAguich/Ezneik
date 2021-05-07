@@ -14,6 +14,7 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
+#Estas variables determinan el valor de la comida y de la serpiente aleatoriamente de una lista.
 crayola = ["cyan", "purple", "yellow", "blue", "green", "pink", "orange", "gold", "silver","beige", "spring green"]
 colorSnake = choice(crayola)
 colorComida = choice(crayola)
@@ -22,28 +23,22 @@ if colorSnake == colorComida:
     colorComida = choice(crayola)
 
 def change(x, y):
-    "Change snake direction."
+    "Cambia la dirección de la serpiente"
     aim.x = x
     aim.y = y
 
 def inside(head):
-    "Return True if head inside boundaries."
+    "Regresa True si la serpiente esta dentro de los bordes."
     return -200 < head.x < 190 and -200 < head.y < 190
 
 def move():
-    # Determina el color de la serpiente y la comida
-    crayola = ["cyan", "purple", "yellow", "blue", "green", "pink", "orange", "gold", "silver","beige", "spring green"]
-    colorSnake = choice(crayola)
-    colorComida = choice(crayola)
-    if colorSnake == colorComida:
-        colorComida = choice(crayola)     
-        
     head = snake[-1].copy()
     head.move(aim)
-    food1 = food.move(vector(randint(-1,1)*10, randint(-1,1)*10))
-    
+   
+    food1 = food.move(vector(randint(-1,1)*10, randint(-1,1)*10))  # Mueve la comida un espacio a la vez.
+   
     if not inside(food):
-        food1 = vector(0,0)
+        food1 = vector(0,0)  # En caso de que la comida no se encuentre dentro de los parametros, lo regresa al centro.
 
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, "magenta")
